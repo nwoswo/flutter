@@ -84,8 +84,10 @@ class _ListaPullState extends State<ListaPull> {
         itemCount: _listanumeros.length,
         itemBuilder: (BuildContext context, int index) {
           final imagen = _listanumeros[index];
+          print('https://picsum.photos/500/300/?image=$imagen');
           return FadeInImage(
             placeholder: AssetImage('assets/loading.gif'), 
+            
             image: NetworkImage('https://picsum.photos/500/300/?image=$imagen'),
           );
         }

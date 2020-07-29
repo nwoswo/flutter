@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:peliculas/src/models/pelicula_model.dart';
 
 class CardSwiper extends StatelessWidget {
   
-  final List<dynamic> peliculas;
+  final List<Pelicula> peliculas;
 
 
   CardSwiper( {@required this.peliculas} );
@@ -17,32 +18,52 @@ class CardSwiper extends StatelessWidget {
 
     final _screenSize = MediaQuery.of(context).size;
     
-
+    
     return  Container(
-      margin: EdgeInsets.only(top: 10.0),
-      width: double.infinity,
-      height: _screenSize.height * 0.45,
+      margin: EdgeInsets.only(top: 5.0),
+      // width: double.infinity,
+      // height: _screenSize.height * 0.55,
+      // color: Colors.red,
       child: Center(
     
         child: Swiper(
           layout: SwiperLayout.STACK,
-          itemWidth: _screenSize.width * 0.7,
-          itemHeight: _screenSize.height * 0.45,
+          itemWidth: _screenSize.width * 0.65,
+           itemHeight: _screenSize.height * 0.55,
 
           itemBuilder: (BuildContext context,int index){
-            return ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: Image.network("https://via.placeholder.com/350x150",fit: BoxFit.fill,),
+            // print(peliculas[index].getPosterImge());
+
+            //Id Unico
+            peliculas[index].uniqueId = '${peliculas[index].id}-tarjeta';
+
+            return Hero(
+              tag: peliculas[index].uniqueId,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20.0),
+                child: GestureDetector(
+                  onTap: (){
+                     Navigator.pushNamed(context, 'detalle', arguments: peliculas[index]);
+                  },
+                  child: FadeInImage(
+                  placeholder: AssetImage('assets/loading.gif'), 
+                  image: NetworkImage(peliculas[index].getPosterImge()),
+                  fit: BoxFit.cover,
+                      
+                  ),
+                ),
+                // child: Image.network("https://via.placeholder.com/350x150",fit: BoxFit.fill,),
+              ),
             );
           },
-          itemCount: 3,
-          pagination: new SwiperPagination(),
-          control: new SwiperControl(),
+          itemCount: peliculas.length,
+          // pagination: new SwiperPagination(),
+          // control: new SwiperControl(),
           
           
         ),
 
-    )  
+      )  
     ); 
 
   }

@@ -134,15 +134,19 @@ class _ListaPageState extends State<ListaPage> {
 
     if(_isLoading){
       return 
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Center(
-                  child: CircularProgressIndicator(),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  ],
                 )
-              ],
-            )
+              ),
+            ],
           );
         
       
