@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "441898028074",
+    "firebase_url": "https://nwo-fluttervarios.firebaseio.com",
+    "project_id": "nwo-fluttervarios",
+    "storage_bucket": "nwo-fluttervarios.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:441898028074:android:99cd7da8ce3b4fd1a44753",
+        "android_client_info": {
+          "package_name": "pe.com.intransort.push"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "441898028074-ljfgqj4jcbvjom6u5jpu2nt6cj20jrrk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pe.com.intransort.push",
+            "certificate_hash": "87453eb4e8460f0800627ccf0e4244ed9cee8f44"
+          }
+        },
+        {
+          "client_id": "441898028074-madnt8n1q34rc5quau1dchhju9dj3430.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_mf-5dHIzQ0WtzYi3G3cfu-gpAbFjZs0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "441898028074-madnt8n1q34rc5quau1dchhju9dj3430.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

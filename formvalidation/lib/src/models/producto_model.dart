@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-//recibe un jsonString  -> regresa un NewProductoModel
+//recibe un json-String  -> regresa un NewProductoModel
 ProductoModel productoModelFromJson(String str) => ProductoModel.fromJson(json.decode(str));
 
-//NewProductoModel -> to Json
+//NewProductoModel -> to Json-String
 String productoModelToJson(ProductoModel data) => json.encode(data.toJson());
 
 class ProductoModel {
@@ -37,7 +37,7 @@ class ProductoModel {
 
     //nEWpRODUCTO to Json
     Map<String, dynamic> toJson() => {
-        "id"          : id,
+        // "id"          : id,
         "titulo"      : titulo,
         "valor"       : valor,
         "disponible"  : disponible,

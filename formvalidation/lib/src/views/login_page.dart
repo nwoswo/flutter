@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:formvalidation/src/bloc/provider.dart';
+import 'package:formvalidation/src/bloc/provider_inhered.dart';
+import 'package:formvalidation/src/providers/usuario_provider.dart';
+import 'package:formvalidation/src/utils/utils.dart';
 
 
 class LoginPage extends StatelessWidget {
   
+  final usuarioProvider = new UsuarioProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class LoginPage extends StatelessWidget {
   Widget _loginForm(BuildContext context){
 
     //TODO provider inhered 1.1
-    final bloc = Provider.of(context);
+    final bloc = ProviderIngered.of(context);
 
 
     final size = MediaQuery.of(context).size;
@@ -57,7 +60,12 @@ class LoginPage extends StatelessWidget {
               ],
             ),
           ),
-          Text('Olvido el password?'),
+          
+          FlatButton(
+            onPressed: () => Navigator.pushNamed(context, 'registro'), 
+            child: Text('Crear una nueva cuenta')
+          ),
+
           SizedBox(height: 100.0,)
         ],
 
@@ -127,13 +135,22 @@ class LoginPage extends StatelessWidget {
 
     //como obtener el ultimo valor enviado al Stream
     //TODO Convine Stream 1.1
-  _login(LoginBloc block,BuildContext context) {
+  _login(LoginBloc block,BuildContext context) async {
 
-    print('=====');
-    print('Email: ${block.getemail}');
-    print('Email: ${block.getpassword}');
+    // print('=====');
+    // print('Email: ${block.getemail}');
+    // print('Email: ${block.getpassword}');
 
-    Navigator.pushNamed(context, 'home');
+    Map info = await usuarioProvider.login(block.getemail, block.getpassword);
+
+    print(info);
+    if( info['ok'] ) {
+      Navigator.pushReplacementNamed(context, 'home');
+    } else {
+      mostrarAlerta(context, info['message']);
+    }
+
+    // 
 
   }
 

@@ -1,4 +1,6 @@
 
+import 'package:flutter/material.dart';
+
 bool insNumeric(String s) {
   if(s.isEmpty) return false;
 
@@ -6,4 +8,22 @@ bool insNumeric(String s) {
 
   return (n == null) ? false : true;
 
+}
+
+void mostrarAlerta(BuildContext context,String mensaje) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text('Informacion Correcta'),
+        content: Text(mensaje),
+        actions: <Widget>[
+          FlatButton(
+            onPressed: () => Navigator.of(context).pop(), 
+            child: Text('Ok')
+          ),
+        ],
+      );
+    }
+  );
 }
